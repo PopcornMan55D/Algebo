@@ -7,9 +7,7 @@
     <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
     <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
     <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
-    <!-- Include Blockly language files -->
     <script src="https://unpkg.com/blockly/msg/js/en.js"></script>
-    <script src="scripts.js"></script>
 </head>
 <body>
     <div id="content" style="display: flex;">
@@ -17,13 +15,66 @@
         <div id="sidebar" style="width: 200px; padding: 10px;">
             <h3>Blocks</h3>
             <xml id="toolbox" style="display: none;">
-                <block type="controls_if"></block>
-                <block type="controls_repeat_ext"></block>
-                <block type="logic_compare"></block>
+                <block type="move"></block>
                 <!-- Add more blocks here -->
             </xml>
         </div>
     </div>
     <button onclick="runCode()">Run</button>
+
+    <script>
+        // Function to execute the generated Blockly code
+        function runCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            eval(code);
+        }
+
+        // Function to move the sprite
+        function moveSprite(x, y) {
+            var sprite = document.getElementById('sprite');
+            sprite.setAttribute('x', parseInt(sprite.getAttribute('x')) + x);
+            sprite.setAttribute('y', parseInt(sprite.getAttribute('y')) + y);
+        }
+
+        // Blockly blocks
+        Blockly.Blocks['move'] = {
+            init: function() {
+                this.appendDummyInput()
+                    .appendField("move")
+                    .appendField(new Blockly.FieldDropdown([["right", "RIGHT"], ["left", "LEFT"], ["up", "UP"], ["down", "DOWN"]]), "direction");
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setColour(230);
+                this.setTooltip("");
+                this.setHelpUrl("");
+            }
+        };
+
+        Blockly.JavaScript['move'] = function(block) {
+            var dropdown_direction = block.getFieldValue('direction');
+            var code = '';
+            switch (dropdown_direction) {
+                case 'RIGHT':
+                    code = 'moveSprite(10, 0);\n';
+                    break;
+                case 'LEFT':
+                    code = 'moveSprite(-10, 0);\n';
+                    break;
+                case 'UP':
+                    code = 'moveSprite(0, -10);\n';
+                    break;
+                case 'DOWN':
+                    code = 'moveSprite(0, 10);\n';
+                    break;
+            }
+            return code;
+        };
+
+        // Initialize Blockly workspace
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox'),
+            trashcan: true
+        });
+    </script>
 </body>
 </html>
