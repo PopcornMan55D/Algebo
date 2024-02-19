@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Create Blockly workspace
-  var workspace = Blockly.inject('workspace', {
-    toolbox: document.getElementById('toolbox')
-  });
+  // Load Blockly toolbox
+  fetch('toolbox.xml')
+    .then(response => response.text())
+    .then(toolboxXml => {
+      // Create Blockly workspace
+      var workspace = Blockly.inject('workspace', {
+        toolbox: toolboxXml
+      });
+    });
 });
-
-
