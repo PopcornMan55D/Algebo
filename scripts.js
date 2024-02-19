@@ -45,10 +45,10 @@ Blockly.JavaScript['move'] = function(block) {
     return code;
 };
 
-// Initialize Blockly workspace after window loads
-window.onload = function() {
-    var workspace = Blockly.inject('blocklyDiv', {
-        toolbox: document.getElementById('toolbox'),
-        trashcan: true
-    });
-};
+// Initialize Blockly workspace
+var workspace = Blockly.inject('blocklyDiv', {
+    toolbox: document.getElementById('toolbox'),
+    trashcan: true,
+    // Explicitly set the language
+    language: 'en'
+});
