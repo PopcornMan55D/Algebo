@@ -97,11 +97,48 @@
             return code;
         };
 
-        // Initialize Blockly workspace
         var workspace = Blockly.inject('blocklyDiv', {
             toolbox: document.getElementById('toolbox'),
             trashcan: true
         });
     </script>
+    <!-- Blockly toolbox -->
+    <xml id="toolbox" style="display: none;">
+        <!-- Motion category -->
+        <category name="Motion" colour="#4C97FF">
+            <block type="move"></block>
+            <!-- Add more blocks from Motion category -->
+        </category>
+        <!-- Looks category -->
+        <category name="Looks" colour="#9966FF">
+            <!-- Add blocks from Looks category -->
+        </category>
+        <!-- Sound category -->
+        <category name="Sound" colour="#D65CD6">
+            <!-- Add blocks from Sound category -->
+        </category>
+        <!-- Events category -->
+        <category name="Events" colour="#FFD500">
+            <!-- Add blocks from Events category -->
+        </category>
+        <!-- Control category -->
+        <category name="Control" colour="#FFAB19">
+            <!-- Add blocks from Control category -->
+        </category>
+        <!-- Sensing category -->
+        <category name="Sensing" colour="#4CBFE6">
+            <!-- Add blocks from Sensing category -->
+        </category>
+        <!-- Operators category -->
+        <category name="Operators" colour="#B3B300">
+            <!-- Add blocks from Operators category -->
+        </category>
+        <!-- Variables category -->
+        <category name="Variables" colour="#FF8C1A">
+            <!-- Add blocks from Variables category -->
+        </category>
+        <!-- My Blocks category -->
+        <category name="My Blocks" custom="PROCEDURE" colour="#FF6680"></category>
+    </xml>
 </body>
 </html>
