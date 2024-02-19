@@ -5,16 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scratch Clone</title>
 <link rel="stylesheet" href="styles.css">
+<!-- Include Blockly library -->
+<script src="https://unpkg.com/blockly/blockly.min.js"></script>
+<!-- Include Blockly CSS -->
+<link rel="stylesheet" href="https://unpkg.com/blockly/blocks/css.js">
 </head>
 <body>
-  <div id="sidebar">
-    <div class="block-type" data-type="move">Move</div>
-    <div class="block-type" data-type="turn">Turn</div>
-    <div class="block-type" data-type="repeat">Repeat</div>
-  </div>
-  <div id="workspace">
-    <div id="stage"></div>
-  </div>
+  <div id="workspace"></div>
   <script src="scripts.js"></script>
 </body>
 </html>
+
