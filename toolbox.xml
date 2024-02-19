@@ -1,0 +1,9 @@
+<xml id="toolbox" style="display: none">
+  <category name="Motion" colour="#4C97FF">
+    <block type="motion_move"></block>
+    <block type="motion_turn"></block>
+  </category>
+  <category name="Control" colour="#FFAB19">
+    <block type="control_repeat"></block>
+  </category>
+</xml>
