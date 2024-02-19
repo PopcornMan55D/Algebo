@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   const workspace = document.getElementById("workspace");
   const stage = document.getElementById("stage");
+  const sidebar = document.getElementById("sidebar");
 
   // Create blocks
   const blockTypes = [
@@ -10,41 +11,37 @@ document.addEventListener("DOMContentLoaded", function() {
   ];
   blockTypes.forEach(blockType => {
     const block = createBlock(blockType);
-    workspace.appendChild(block);
+    sidebar.appendChild(block);
   });
 
   // Function to create a block
   function createBlock(blockType) {
     const block = document.createElement("div");
-    block.className = "block";
+    block.className = "block-type";
     block.textContent = blockType.name;
     block.style.backgroundColor = blockType.color;
-    block.draggable = true;
-    block.addEventListener("dragstart", dragStart);
+    block.setAttribute("data-type", blockType.name.toLowerCase());
+    block.addEventListener("click", blockClick);
     return block;
   }
 
-  // Function for drag and drop
-  function dragStart(event) {
-    event.dataTransfer.setData("text/plain", event.target.textContent);
+  // Function for block click event
+  function blockClick(event) {
+    const blockType = event.target.getAttribute("data-type");
+    const block = createBlockElement(blockType);
+    workspace.appendChild(block);
   }
 
-  // Prevent default behavior for dragover event
-  workspace.addEventListener("dragover", function(event) {
-    event.preventDefault();
-  });
-
-  // Handle drop event
-  workspace.addEventListener("drop", function(event) {
-    event.preventDefault();
-    const blockName = event.dataTransfer.getData("text/plain");
+  // Function to create a block element
+  function createBlockElement(blockType) {
     const block = document.createElement("div");
     block.className = "block";
-    block.textContent = blockName;
+    block.textContent = blockType;
     block.style.backgroundColor = "transparent";
     block.style.position = "absolute";
-    block.style.left = (event.clientX - workspace.offsetLeft) + "px";
-    block.style.top = (event.clientY - workspace.offsetTop) + "px";
-    stage.appendChild(block);
-  });
+    block.style.left = "10px";
+    block.style.top = "10px";
+    return block;
+  }
 });
+
