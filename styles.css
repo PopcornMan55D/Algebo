@@ -1,7 +1,21 @@
+#sidebar {
+  width: 200px;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  float: left;
+}
+
+.block-type {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
 #workspace {
-  width: 800px;
-  height: 600px;
-  border: 1px solid #ccc;
+  width: calc(100% - 200px);
+  height: 100%;
+  float: left;
   position: relative;
 }
 
@@ -21,6 +35,4 @@
   line-height: 50px;
   cursor: pointer;
   position: absolute;
-  top: 10px;
-  left: 10px;
 }
