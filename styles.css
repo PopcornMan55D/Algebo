@@ -13,10 +13,8 @@
 }
 
 #workspace {
-  width: calc(100% - 200px);
-  height: 100%;
-  float: left;
-  position: relative;
+  width: 800px;
+  height: 600px;
 }
 
 #stage {
